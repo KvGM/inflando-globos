@@ -13,7 +13,8 @@ function explosion(event){
             globo.style.fontSize = tamanioActual;
         } else {
             document.removeEventListener('keydown',explosion);
-            globo.innerHTML = '&#128165';
+            borrarNodosHijos(zona);
+            globo.innerHTML = '💥'; //Cambiar 
             zona.appendChild(generaBoton('reiniciar'));
             document.addEventListener('click', reiniciar);
         }
