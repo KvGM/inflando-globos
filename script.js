@@ -1,31 +1,21 @@
-let globo = document.getElementById('globo');
-const zona = document.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
-globo.style.fontSize = '30px';
-let tamanioActual = globo.style.fontSize;
+const zona = document.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; //Main
+cargar();
 const tamanioMax = 250;
 const tamanioMin = 30;
 const aumento = 5;
-document.addEventListener('keydown', explosion);
 
 function explosion(event){
+    let tamanioActual = globo.style.fontSize;
     let tecla = event.key;
     if (tecla == 'ArrowUp') {
         if (parseInt(tamanioActual) < tamanioMax) {
             tamanioActual = parseInt(tamanioActual) + aumento + 'px';
             globo.style.fontSize = tamanioActual;
         } else {
-            //Boom &#128165;
             document.removeEventListener('keydown',explosion);
             globo.innerHTML = '&#128165';
-            zona.appendChild(generaBoton('Reiniciar')); //genera boton
-            //document.getElementById('Reiniciar').addEventListener('click',alert('funciona'));
-            //?Revisar el boton con evento
-
-            // * Ponerle evento al botón y 
-            // * después reiniciar el texto y borrar boton/evento
-
-
-
+            zona.appendChild(generaBoton('reiniciar'));
+            document.addEventListener('click', reiniciar);
         }
     } else {
         if (tecla == 'ArrowDown') {
@@ -43,4 +33,28 @@ function generaBoton(nombre){
     boton.appendChild(txt);
     boton.id = nombre;
     return boton;
+}
+
+function reiniciar(event){
+    if(event.target && event.target.id == 'reiniciar'){ //Mal
+        borrarNodosHijos(zona);
+        cargar();
+    }
+}
+
+function cargar(){
+    borrarNodosHijos(zona);
+    let globo = document.createElement('p');
+    let code = document.createTextNode('🎈'); //Buscar como cambiar esto
+    globo.appendChild(code);
+    globo.id = 'globo';
+    zona.appendChild(globo);
+    globo.style.fontSize = '30px';
+    document.addEventListener('keydown', explosion);
+}
+
+function borrarNodosHijos(padre) {
+    while (padre.firstChild) {
+        padre.removeChild(padre.firstChild);
+    }
 }
