@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+    <title>U05A02 - Inflando globos</title>
+</head>
+<body>
+    <header>
+        <p>Tecla &#11014; para inflar el globo</p>
+        <p>Tecla &#11015; para desinflar el globo</p>
+    </header>
+    <main>
+        <p id="globo">&#127880;</p>
+    </main>
+    <script type="text/javascript">
+        let globo = document.getElementById('globo');
+        globo.style.fontSize = '30px';
+        let tamanioActual = globo.style.fontSize;
+        const tamanioMax = 250;
+        const tamanioMin = 30;
+        const cantidad = 5;
+        document.addEventListener('keydown',function(event){
+            let tecla = event.key;
+            if(tecla == 'ArrowUp'){
+                if(parseInt(tamanioActual) < tamanioMax){
+                    tamanioActual = parseInt(tamanioActual) + cantidad + 'px';
+                    globo.style.fontSize = tamanioActual;
+                }
+                else{
+                    //Mal
+                    globo.innerHTML = '&#128165;';
+                    globo.id='explosion';
+                }
+            }
+            else{
+                if(tecla == 'ArrowDown'){
+                    if(parseInt(tamanioActual) > tamanioMin){
+                    tamanioActual = parseInt(tamanioActual) - cantidad + 'px';
+                    globo.style.fontSize = tamanioActual;
+                    }
+                }
+                else{
+                    //No cambia
+                }
+            }
+        });
+    </script>
+</body>
+</html>
