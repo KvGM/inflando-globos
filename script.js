@@ -1,6 +1,6 @@
 const zona = document.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; //Main
 cargar();
-const tamanioMax = 250;
+const tamanioMax = 400;
 const tamanioMin = 30;
 const aumento = 5;
 
