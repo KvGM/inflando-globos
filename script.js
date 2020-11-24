@@ -29,7 +29,7 @@ function desinflar(event) {
     }
 }
 
-//Genera un botón y le añade una función reinciar
+//Genera un botón y le añade una función reiniciar
 function generaBoton(nombre) {
     let boton = document.createElement('button');
     let txt = document.createTextNode(nombre);
