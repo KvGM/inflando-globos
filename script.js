@@ -36,7 +36,7 @@ function generaBoton(nombre) {
     boton.appendChild(txt);
     boton.id = nombre;
     boton.addEventListener('click', reiniciar);
-    zona.appendChild(boton);
+    return boton;
 }
 
 //Reinicia la pantalla
